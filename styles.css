@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+:root {
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --primary-light: #dbeafe;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --gray-dark: #111827;
+  --gray-medium: #6b7280;
+  --gray-light: #f3f4f6;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+    "Helvetica Neue", sans-serif;
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+}
+
+/* Improved focus styles */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Improved input styles */
+input,
+select,
+textarea {
+  @apply border border-gray-300 rounded-md px-3 py-2 w-full;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  @apply border-blue-500 ring-1 ring-blue-500;
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+/* Custom range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 5px;
+  background-image: linear-gradient(var(--primary), var(--primary));
+  background-repeat: no-repeat;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Toggle switch styling */
+.dot {
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Card hover effects */
+.hover\:shadow-md:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Button animations */
+button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Nav icon animations */
+.nav-link .nav-icon {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover .nav-icon {
+  transform: scale(1.15);
+  color: var(--primary-light);
+}
+
+.nav-link.active .nav-icon {
+  transform: scale(1.2);
+  color: white;
+}
+
+/* Ripple effect for all buttons */
+button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button:active::after {
+  animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(20);
+      opacity: 0;
+  }
+}
